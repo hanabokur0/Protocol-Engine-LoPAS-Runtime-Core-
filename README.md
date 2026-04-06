@@ -1,36 +1,30 @@
 # 🧠 Protocol Engine (LoPAS Runtime Core)
 
-This repository implements a **classification-first execution system**.
-
-It converts structured observations into actions.
+A **classification-first execution system** that converts observations into actions.
 
 ---
 
-## 🔗 Pipeline
+## 🚀 Quick Start
 
-FieldVoice → Classification → Protocol Engine → Action  
-　　　　　　　　　　　　　　　↓  
-　　　　　　　　　　　　　UNKNOWN → Learning
+```bash
+python run.py --mode demo
+🔗 Pipeline
+External Input
+   ↓
+[RNC] → input validation (True / False)
+   ↓
+[Pipeline] → classification
+   ↓
+[Protocol Engine] → execution
+   ↓
+[Learning] → unknown → protocol evolution
+🧩 What this does
 
----
+Given an input:
 
-## 🚀 What this does
-
-Given an input observation:
-
-- ✅ AUTO → executed immediately  
-- 👤 REVIEW → sent to human  
-- ❓ UNKNOWN → stored and learned  
-
----
-
-## 🧩 Example
-
-```python
-from orchestrator_v02 import orchestrate_field_voices
-
-result = orchestrate_field_voices(field_voices)
-print(result)
+✅ AUTO → executed immediately
+👤 REVIEW → sent to human
+❓ UNKNOWN → stored and learned
 🧠 Core Design
 1. Classification-first
 
@@ -41,14 +35,13 @@ REVIEW
 ESCALATE
 UNKNOWN
 IGNORE
-2. Execution layer
-
-Protocol Engine decides:
-
-auto execution
-human review
-unknown handling
-3. Learning layer
+2. Responsibility separation
+Layer	Role
+RNC	Input validation (external)
+Pipeline	Classification
+Protocol Engine	Execution
+Learning	Evolution
+3. Unknown is not failure
 
 Unknown cases are not errors.
 
@@ -66,24 +59,43 @@ pipeline/
 learning/
   protocol_evolution_v01.py
   review_feedback_v01.py
-🔄 Evolution
 
-The system improves over time:
+rnc/
+  rnc_validator.py
 
-Unknown cases are logged
-Patterns are extracted
-New protocols are created
-🧱 System Position
+run.py
+README.md
+🧪 Example
+from orchestrator_v02 import orchestrate_field_voices
 
-This is the execution layer of a larger system:
+result = orchestrate_field_voices(field_voices)
+print(result)
+🔄 Learning
 
-RNC → input validation (external)
-Protocol Engine → execution (this repo)
-Learning → evolution (this repo)
+Unknown cases are automatically:
+
+logged
+clustered
+converted into candidate protocols
+
+This enables continuous system evolution.
+
+⚙️ Execution Flow
+RNC PASS → Protocol Engine → AUTO / HUMAN / UNKNOWN
+                              ↓
+                         UNKNOWN → Learning
 ⚠️ Design Principles
 No manual decision in execution layer
-Unknown is not failure
+Unknown is a signal, not an error
 Exceptions must become rules
+Responsibility must be explicit
+🧱 System Position
+
+This repository is the execution + learning layer of a larger system:
+
+RNC → input responsibility layer (external)
+Protocol Engine → execution layer (this repo)
+Learning → evolution layer (this repo)
 📌 Status
 
 Experimental / evolving system
