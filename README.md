@@ -1,6 +1,7 @@
 # 🧠 Protocol Engine (LoPAS Runtime Core)
 
-A **classification-first execution system** that converts observations into actions.
+> This is the skeleton of an AI agent.  
+> A system that separates responsibility, execution, and learning.
 
 ---
 
