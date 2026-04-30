@@ -1,5 +1,5 @@
 # 🧠 Protocol Engine (LoPAS Runtime Core)
-
+　　　
 > This is the skeleton of an AI agent.  
 > A system that separates responsibility, execution, and learning.
 
