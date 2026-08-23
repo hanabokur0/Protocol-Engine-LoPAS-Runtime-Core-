@@ -101,6 +101,16 @@ Learning → evolution layer (this repo)
 
 Experimental / evolving system
 
+## Status note (added later)
+
+This repository is an early prototype. Its classification taxonomy (`AUTO/REVIEW/ESCALATE/UNKNOWN/IGNORE`) and Observation→Protocol loop were later implemented more completely elsewhere:
+
+- **[classification-simulation-pack](https://github.com/hanabokur0/classification-simulation-pack)** — the same classification idea (`AUTO/REVIEW/ESCALATE/HOLD/MANUAL`), now with real schemas, a seeded runner, and a test suite.
+- **[lopas-protocol-foundry](https://github.com/hanabokur0/lopas-protocol-foundry)** — the same Observation→Protocol Candidate pipeline, with scenario testing and independent grading.
+- **[LoPAS-LCA](https://github.com/hanabokur0/LoPAS-LCA)** — the `UNKNOWN → learning` loop, formalized as separate Classification (LCP) and Validation systems.
+
+This repo is kept for history. Prefer the three above for new work.
+
 📜 License
 
 MIT
